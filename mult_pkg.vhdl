@@ -1,40 +1,34 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.numeric_std.all;
+use IEEE.std_logic_arith.all;
 
-package shift_pkg is
+package mult_pkg is 
 
-    procedure left_shift (
-        signal i_first_operand : in std_logic_vector(31 downto 0);
-        signal i_second_operand : in std_logic_vector(31 downto 0);
-        signal o_result : out std_logic_vector(31 downto 0)
-        );
-
-    procedure right_shift (
+    procedure multiplication (
         signal i_first_operand : in std_logic_vector(31 downto 0);
         signal i_second_operand : in std_logic_vector(31 downto 0);
         signal o_result : out std_logic_vector(31 downto 0)
     );
 
-    procedure arithmetic_left_shift (
+    procedure multiplication_high (
         signal i_first_operand : in std_logic_vector(31 downto 0);
         signal i_second_operand : in std_logic_vector(31 downto 0);
         signal o_result : out std_logic_vector(31 downto 0)
     );
 
-    procedure arithmetic_right_shift (
+    procedure multiplication_high_signed_unsigned (
         signal i_first_operand : in std_logic_vector(31 downto 0);
         signal i_second_operand : in std_logic_vector(31 downto 0);
         signal o_result : out std_logic_vector(31 downto 0)
     );
 
-    procedure loop_left_shift (
+    procedure multiplication_high_unsigned (
         signal i_first_operand : in std_logic_vector(31 downto 0);
         signal i_second_operand : in std_logic_vector(31 downto 0);
         signal o_result : out std_logic_vector(31 downto 0)
     );
 
-    procedure loop_right_shift (
+    procedure multiplication_word (
         signal i_first_operand : in std_logic_vector(31 downto 0);
         signal i_second_operand : in std_logic_vector(31 downto 0);
         signal o_result : out std_logic_vector(31 downto 0)
@@ -42,60 +36,55 @@ package shift_pkg is
 
 end package;
 
-package body shift_pkg is
+package body mult_pkg is
+   
+    procedure multiplication (
+        signal i_first_operand : in std_logic_vector(31 downto 0);
+        signal i_second_operand : in std_logic_vector(31 downto 0);
+        signal o_result : out std_logic_vector(31 downto 0)
+    ) is
+        variable result : std_logic_vector(63 downto 0); 
+    begin
+        result := signed(i_first_operand) * signed(i_second_operand);
+        o_result <= result(31 downto 0);
+    end procedure;
 
-    procedure left_shift (
+    procedure multiplication_high (
+        signal i_first_operand : in std_logic_vector(31 downto 0);
+        signal i_second_operand : in std_logic_vector(31 downto 0);
+        signal o_result : out std_logic_vector(31 downto 0)
+    ) is 
+        variable result : std_logic_vector(63 downto 0); 
+    begin
+        result := signed(i_first_operand) * signed(i_second_operand);
+        o_result <= result(63 downto 32);
+    end procedure;
+
+    procedure multiplication_high_signed_unsigned (
         signal i_first_operand : in std_logic_vector(31 downto 0);
         signal i_second_operand : in std_logic_vector(31 downto 0);
         signal o_result : out std_logic_vector(31 downto 0)
     ) is 
     begin
-        o_result <= to_stdlogicvector(to_bitvector(i_first_operand) sll to_integer(unsigned(i_second_operand)));
+
     end procedure;
 
-    procedure right_shift (
+    procedure multiplication_high_unsigned (
         signal i_first_operand : in std_logic_vector(31 downto 0);
         signal i_second_operand : in std_logic_vector(31 downto 0);
         signal o_result : out std_logic_vector(31 downto 0)
-    ) is
+    ) is 
     begin
-        o_result <= to_stdlogicvector(to_bitvector(i_first_operand) srl to_integer(unsigned(i_second_operand)));
+
     end procedure;
 
-    procedure arithmetic_left_shift (
+    procedure multiplication_word (
         signal i_first_operand : in std_logic_vector(31 downto 0);
         signal i_second_operand : in std_logic_vector(31 downto 0);
         signal o_result : out std_logic_vector(31 downto 0)
-    ) is
+    ) is 
     begin
-        o_result <= to_stdlogicvector(to_bitvector(i_first_operand) sla to_integer(unsigned(i_second_operand)));
+
     end procedure;
 
-    procedure arithmetic_right_shift (
-        signal i_first_operand : in std_logic_vector(31 downto 0);
-        signal i_second_operand : in std_logic_vector(31 downto 0);
-        signal o_result : out std_logic_vector(31 downto 0)
-    ) is
-    begin
-        o_result <= to_stdlogicvector(to_bitvector(i_first_operand) sra to_integer(unsigned(i_second_operand)));
-    end procedure;
-
-    procedure loop_left_shift (
-        signal i_first_operand : in std_logic_vector(31 downto 0);
-        signal i_second_operand : in std_logic_vector(31 downto 0);
-        signal o_result : out std_logic_vector(31 downto 0)
-    ) is
-    begin
-        o_result <= to_stdlogicvector(to_bitvector(i_first_operand) rol to_integer(unsigned(i_second_operand)));
-    end procedure;
-
-    procedure loop_right_shift (
-        signal i_first_operand : in std_logic_vector(31 downto 0);
-        signal i_second_operand : in std_logic_vector(31 downto 0);
-        signal o_result : out std_logic_vector(31 downto 0)
-    ) is
-    begin
-        o_result <= to_stdlogicvector(to_bitvector(i_first_operand) ror to_integer(unsigned(i_second_operand)));
-    end procedure;
-    
 end package body;
