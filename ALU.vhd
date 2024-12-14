@@ -24,6 +24,7 @@ architecture ALU_arch of ALU is
     constant SLLI_OP   : std_logic_vector := "00000000010010011";
     constant SRLI_OP   : std_logic_vector := "00000001010010011";
     constant SRAI_OP   : std_logic_vector := "01000001010010011";
+    
     constant ADD_OP    : std_logic_vector := "00000000000110011";
     constant SUB_OP    : std_logic_vector := "01000000000110011";
     constant SLL_OP    : std_logic_vector := "00000000010110011";
@@ -34,8 +35,8 @@ architecture ALU_arch of ALU is
     constant SRA_OP    : std_logic_vector := "01000001010110011";
     constant OR_OP     : std_logic_vector := "00000001100110011";
     constant AND_OP    : std_logic_vector := "00000001110110011";
-    constant MUL_OP    : std_logic_vector := "00000001000110011";
-    constant MULH_OP   : std_logic_vector := "00000001010110011";
+    constant MUL_OP    : std_logic_vector := "00000011000110011";
+    constant MULH_OP   : std_logic_vector := "00000011010110011";
     constant MULHSU_OP : std_logic_vector := "00000010100110011";
     constant MULHU_OP  : std_logic_vector := "00000010110110011";
 
