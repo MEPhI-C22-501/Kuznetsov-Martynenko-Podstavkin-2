@@ -61,6 +61,9 @@ begin
         wait for clk_period;
         o_manage <= ADDI_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
         
         o_first_operand <= x"FFFFFFFB"; -- -5
         o_second_operand <= x"00000008"; -- +8
@@ -70,6 +73,9 @@ begin
         wait for clk_period;
         o_manage <= ADDI_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
 
         o_first_operand <= x"00000005"; -- +5
         o_second_operand <= x"FFFFFFF8"; -- -8
@@ -79,6 +85,9 @@ begin
         wait for clk_period;
         o_manage <= ADDI_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
 
         o_first_operand <= x"FFFFFFFB"; -- -5
         o_second_operand <= x"FFFFFFF8"; -- -8
@@ -88,6 +97,9 @@ begin
         wait for clk_period;
         o_manage <= ADDI_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
 
         -- shift tests
 
@@ -105,11 +117,19 @@ begin
         wait for clk_period;
         o_manage <= SRAI_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        o_first_operand <= x"00001000";
         o_first_operand <= x"80000000"; -- отрицательное число
         o_manage <= SRA_OP;
         wait for clk_period;
         o_manage <= SRAI_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
 
         -- compare test
 
@@ -123,6 +143,9 @@ begin
         wait for clk_period;
         o_manage <= SLTIU_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
 
         o_first_operand <= x"00000001"; -- +1
         o_second_operand <= x"00000010"; -- +16
@@ -134,6 +157,9 @@ begin
         wait for clk_period;
         o_manage <= SLTIU_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
 
         o_first_operand <= x"FFFFFFF0"; --  -0000002(-2)       /FFFFFFF0(+286331152)
         o_second_operand <= x"F0000001"; -- -FFFFFF1(-17895697)/F0000001(+268435457)
@@ -141,10 +167,13 @@ begin
         wait for clk_period;
         o_manage <= SLTU_OP;
         wait for clk_period;
-        o_manage <= SLTI_OP;
+        -- o_manage <= SLTI_OP;
+        -- wait for clk_period;
+        -- o_manage <= SLTIU_OP;
+        -- wait for clk_period;
+        o_rst <= '1';
         wait for clk_period;
-        o_manage <= SLTIU_OP;
-        wait for clk_period;
+        o_rst <= '0';
 
         -- logic test
 
@@ -162,7 +191,14 @@ begin
         wait for clk_period;
         o_manage <= ANDI_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
 
+        -- multiplication test
+
+        o_first_operand <= x"00000005"; -- 5 // результат - 1200
+        o_second_operand <= x"000000F0"; -- 240      // или x"00000000000004B0"
         o_manage <= MUL_OP;
         wait for clk_period;
         o_manage <= MULH_OP;
@@ -171,6 +207,57 @@ begin
         wait for clk_period;
         o_manage <= MULHU_OP;
         wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        o_first_operand <= x"10000005"; -- 268435461 // результат - 64 424 510 640
+        o_second_operand <= x"000000F0"; -- 240      // или x"0000000F000004B0"
+        o_manage <= MUL_OP;
+        wait for clk_period;
+        o_manage <= MULH_OP;
+        wait for clk_period;
+        o_manage <= MULHSU_OP;
+        wait for clk_period;
+        o_manage <= MULHU_OP;
+        wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        o_first_operand <= x"FFFFFFFB" -- -5 или 4294967291 для MULHU
+        o_second_operand <= x"000000F0"; -- 240 // результат для signed -1200 для unsigned 1 030 792 149 840
+        o_manage <= MUL_OP;                   --// или x"FFFFFFFFFFFFFB4F" и x"0000000EFFFFFFB50"
+        wait for clk_period;
+        o_manage <= MULH_OP;
+        wait for clk_period;
+        o_manage <= MULHSU_OP;
+        wait for clk_period;
+        o_manage <= MULHU_OP;
+        wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        o_first_operand <= x"000000F0"; -- 240 // результат для signed -1200, для unsigned и signed/unsigned -  
+        o_second_operand <= x"FFFFFFFB"; -- -5 // 1 030 792 149 840 или x"FFFFFFFFFFFFFB4F" и x"0000000EFFFFFFB50"
+        o_manage <= XOR_OP;
+        wait for clk_period;
+        o_manage <= OR_OP;
+        wait for clk_period;
+        o_manage <= AND_OP;
+        wait for clk_period;
+        o_manage <= XORI_OP;
+        wait for clk_period;
+        o_manage <= ORI_OP;
+        wait for clk_period;
+        o_manage <= ANDI_OP;
+        wait for clk_period;
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+
 
     end process ;
 end architecture;
