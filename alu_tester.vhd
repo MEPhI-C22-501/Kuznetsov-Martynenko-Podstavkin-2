@@ -53,7 +53,7 @@ begin
 
         -- arithmetic tests
 
-        o_first_operand <= x"00000005"; -- +5
+        o_first_operand <= x"00000005"; -- +5 
         o_second_operand <= x"00000008"; -- +8
         o_manage <= ADD_OP;
         wait for clk_period;
@@ -225,7 +225,7 @@ begin
         wait for clk_period;
         o_rst <= '0';
 
-        o_first_operand <= x"FFFFFFFB" -- -5 или 4294967291 для MULHU
+        o_first_operand <= x"FFFFFFFB"; -- -5 или 4294967291 для MULHU
         o_second_operand <= x"000000F0"; -- 240 // результат для signed -1200 для unsigned 1 030 792 149 840
         o_manage <= MUL_OP;                   --// или x"FFFFFFFFFFFFFB4F" и x"0000000EFFFFFFB50"
         wait for clk_period;
@@ -241,23 +241,17 @@ begin
 
         o_first_operand <= x"000000F0"; -- 240 // результат для signed -1200, для unsigned и signed/unsigned -  
         o_second_operand <= x"FFFFFFFB"; -- -5 // 1 030 792 149 840 или x"FFFFFFFFFFFFFB4F" и x"0000000EFFFFFFB50"
-        o_manage <= XOR_OP;
+        o_manage <= MUL_OP;
         wait for clk_period;
-        o_manage <= OR_OP;
+        o_manage <= MULH_OP;
         wait for clk_period;
-        o_manage <= AND_OP;
+        o_manage <= MULHSU_OP;
         wait for clk_period;
-        o_manage <= XORI_OP;
-        wait for clk_period;
-        o_manage <= ORI_OP;
-        wait for clk_period;
-        o_manage <= ANDI_OP;
+        o_manage <= MULHU_OP;
         wait for clk_period;
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
-
-
 
     end process ;
 end architecture;

@@ -164,9 +164,9 @@ package body alu_package is
     ) return std_logic_vector is 
         variable len : integer := i_first_operand'length - 1;
         variable shift : integer := to_integer(unsigned(i_second_operand));
-        variable zeros : std_logic_vector(shift - 1 downto 0) := (others => '0');
+        variable zeros : std_logic_vector(len downto 0) := (others => '0');
     begin
-        return i_first_operand(len - shift downto 0) & zeros;
+        return i_first_operand(len - shift downto 0) & zeros(shift - 1 downto 0);
     end function;
 
     function shift_right_logic (
@@ -175,9 +175,9 @@ package body alu_package is
     ) return std_logic_vector is
         variable len : integer := i_first_operand'length - 1;
         variable shift : integer := to_integer(unsigned(i_second_operand));
-        variable zeros : std_logic_vector(shift - 1 downto 0) := (others => '0');
+        variable zeros : std_logic_vector(len downto 0) := (others => '0');
     begin
-        return zeros & i_first_operand(len downto shift);
+        return zeros(shift - 1 downto 0) & i_first_operand(len downto shift);
     end function;
 
     function shift_right_arithmetic (
@@ -186,14 +186,14 @@ package body alu_package is
     ) return std_logic_vector is
         variable len : integer := i_first_operand'length - 1;
         variable shift : integer := to_integer(unsigned(i_second_operand));
-        variable space : std_logic_vector(shift - 1 downto 0);
+        variable space : std_logic_vector(len downto 0) := (others => '0');
     begin
         if(i_first_operand(len) = '0') then
             space := (others => '0');
         else    
             space := (others => '1');
         end if;
-        return space & i_first_operand(len downto shift);
+        return space(shift - 1 downto 0) & i_first_operand(len downto shift);
     end function;
 
     function multiplication (
