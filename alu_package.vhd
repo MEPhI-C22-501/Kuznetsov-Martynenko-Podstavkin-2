@@ -162,38 +162,27 @@ package body alu_package is
         signal i_first_operand : in std_logic_vector;
         signal i_second_operand : in std_logic_vector
     ) return std_logic_vector is 
-        variable len : integer := i_first_operand'length - 1;
-        variable shift : integer := to_integer(unsigned(i_second_operand));
-        variable zeros : std_logic_vector(len downto 0) := (others => '0');
+        constant shift : integer := to_integer(unsigned(i_second_operand));
     begin
-        return i_first_operand(len - shift downto 0) & zeros(shift - 1 downto 0);
+        return to_stdlogicvector(to_bitvector(i_first_operand) sll shift);
     end function;
 
     function shift_right_logic (
         signal i_first_operand : in std_logic_vector;
         signal i_second_operand : in std_logic_vector
     ) return std_logic_vector is
-        variable len : integer := i_first_operand'length - 1;
         variable shift : integer := to_integer(unsigned(i_second_operand));
-        variable zeros : std_logic_vector(len downto 0) := (others => '0');
     begin
-        return zeros(shift - 1 downto 0) & i_first_operand(len downto shift);
+        return to_stdlogicvector(to_bitvector(i_first_operand) srl shift);
     end function;
 
     function shift_right_arithmetic (
         signal i_first_operand : in std_logic_vector;
         signal i_second_operand : in std_logic_vector
     ) return std_logic_vector is
-        variable len : integer := i_first_operand'length - 1;
         variable shift : integer := to_integer(unsigned(i_second_operand));
-        variable space : std_logic_vector(len downto 0) := (others => '0');
     begin
-        if(i_first_operand(len) = '0') then
-            space := (others => '0');
-        else    
-            space := (others => '1');
-        end if;
-        return space(shift - 1 downto 0) & i_first_operand(len downto shift);
+        return to_stdlogicvector(to_bitvector(i_first_operand) sra shift);
     end function;
 
     function multiplication (

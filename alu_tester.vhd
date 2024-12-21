@@ -41,214 +41,399 @@ architecture alu_tester_arch of alu_tester is
     constant clk_period : time := 10 ns;
     signal clk : std_logic := '1';
 
+    type ops is array (0 to 2) of std_logic_vector(31 downto 0);
+    signal positives : ops := (x"00000001", x"40000000", x"7FFFFFFF");
+    signal negatives : ops := (x"FFFFFFFF", x"C0000000", x"80000001");
+    signal positive_imms : ops := (x"00000001", x"00000400", x"000007FF");
+    signal negative_imms : ops := (x"FFFFFFFF", x"FFFFFC00", x"FFFFF801");
+
 begin
     
     clk <= not clk after clk_period / 2;
     o_clk <= clk;
     process
     begin
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
 
         -- arithmetic tests
 
-        o_first_operand <= x"00000005"; -- +5 
-        o_second_operand <= x"00000008"; -- +8
-        o_manage <= ADD_OP;
-        wait for clk_period;
-        o_manage <= SUB_OP;
-        wait for clk_period;
-        o_manage <= ADDI_OP;
-        wait for clk_period;
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= positives(j);
+                o_second_operand <= positives(i);
+                o_manage <= ADD_OP;
+                wait for clk_period;
+                o_manage <= SUB_OP;
+                wait for clk_period;
+                o_second_operand <= positive_imms(i);
+                o_manage <= ADDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
-        
-        o_first_operand <= x"FFFFFFFB"; -- -5
-        o_second_operand <= x"00000008"; -- +8
-        o_manage <= ADD_OP;
-        wait for clk_period;
-        o_manage <= SUB_OP;
-        wait for clk_period;
-        o_manage <= ADDI_OP;
-        wait for clk_period;
+    
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= positives(j);
+                o_second_operand <= negatives(i);
+                o_manage <= ADD_OP;
+                wait for clk_period;
+                o_manage <= SUB_OP;
+                wait for clk_period;
+                o_second_operand <= negative_imms(i);
+                o_manage <= ADDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
 
-        o_first_operand <= x"00000005"; -- +5
-        o_second_operand <= x"FFFFFFF8"; -- -8
-        o_manage <= ADD_OP;
-        wait for clk_period;
-        o_manage <= SUB_OP;
-        wait for clk_period;
-        o_manage <= ADDI_OP;
-        wait for clk_period;
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= negatives(j);
+                o_second_operand <= positives(i);
+                o_manage <= ADD_OP;
+                wait for clk_period;
+                o_manage <= SUB_OP;
+                wait for clk_period;
+                o_second_operand <= positive_imms(i);
+                o_manage <= ADDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
 
-        o_first_operand <= x"FFFFFFFB"; -- -5
-        o_second_operand <= x"FFFFFFF8"; -- -8
-        o_manage <= ADD_OP;
-        wait for clk_period;
-        o_manage <= SUB_OP;
-        wait for clk_period;
-        o_manage <= ADDI_OP;
-        wait for clk_period;
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= negatives(j);
+                o_second_operand <= negatives(i);
+                o_manage <= ADD_OP;
+                wait for clk_period;
+                o_manage <= SUB_OP;
+                wait for clk_period;
+                o_second_operand <= negative_imms(i);
+                o_manage <= ADDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
 
         -- shift tests
 
-        o_first_operand <= x"00001000";
-        o_second_operand <= x"00000010"; -- сдвиг на 16 двоичных бит, или на 4 шестнадцатиричных 
-        o_manage <= SLL_OP;
-        wait for clk_period;
-        o_manage <= SLLI_OP;
-        wait for clk_period;
-        o_manage <= SRL_OP;
-        wait for clk_period;
-        o_manage <= SRLI_OP;
-        wait for clk_period;
-        o_manage <= SRA_OP;
-        wait for clk_period;
-        o_manage <= SRAI_OP;
-        wait for clk_period;
-        o_rst <= '1';
-        wait for clk_period;
-        o_rst <= '0';
+        for i in 0 to 2 loop 
+            o_first_operand <= positives(i);
+            o_manage <= SLL_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
 
-        o_first_operand <= x"00001000";
-        o_first_operand <= x"80000000"; -- отрицательное число
-        o_manage <= SRA_OP;
-        wait for clk_period;
-        o_manage <= SRAI_OP;
-        wait for clk_period;
-        o_rst <= '1';
-        wait for clk_period;
-        o_rst <= '0';
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
 
-        -- compare test
+            o_manage <= SRL_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;    
+            
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+                
+            o_manage <= SRA_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
+            
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
 
-        o_first_operand <= x"00000010"; -- +16
-        o_second_operand <= x"00000001"; -- +1
-        o_manage <= SLT_OP;
-        wait for clk_period;
-        o_manage <= SLTU_OP;
-        wait for clk_period;
-        o_manage <= SLTI_OP;
-        wait for clk_period;
-        o_manage <= SLTIU_OP;
-        wait for clk_period;
-        o_rst <= '1';
-        wait for clk_period;
-        o_rst <= '0';
+            o_manage <= SLLI_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
 
-        o_first_operand <= x"00000001"; -- +1
-        o_second_operand <= x"00000010"; -- +16
-        o_manage <= SLT_OP;
-        wait for clk_period;
-        o_manage <= SLTU_OP;
-        wait for clk_period;
-        o_manage <= SLTI_OP;
-        wait for clk_period;
-        o_manage <= SLTIU_OP;
-        wait for clk_period;
-        o_rst <= '1';
-        wait for clk_period;
-        o_rst <= '0';
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
 
-        o_first_operand <= x"FFFFFFF0"; --  -0000002(-2)       /FFFFFFF0(+286331152)
-        o_second_operand <= x"F0000001"; -- -FFFFFF1(-17895697)/F0000001(+268435457)
-        o_manage <= SLT_OP;
-        wait for clk_period;
-        o_manage <= SLTU_OP;
-        wait for clk_period;
-        -- o_manage <= SLTI_OP;
-        -- wait for clk_period;
-        -- o_manage <= SLTIU_OP;
-        -- wait for clk_period;
-        o_rst <= '1';
-        wait for clk_period;
-        o_rst <= '0';
+            o_manage <= SRLI_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
+
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+
+            o_manage <= SRAI_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
+
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+
+        end loop;
+
+        for i in 0 to 2 loop 
+            o_first_operand <= negatives(i);
+            o_manage <= SLL_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
+
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+
+            o_manage <= SRL_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;   
+            
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+
+            o_manage <= SRA_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;    
+            
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+
+            o_manage <= SLLI_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
+
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+
+            o_manage <= SRLI_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
+
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+
+            o_manage <= SRAI_OP;
+            for i in 1 to 32 loop
+                o_second_operand <= std_logic_vector(to_unsigned(i, 32));
+                wait for clk_period;
+            end loop;
+
+            o_rst <= '1';
+            wait for clk_period;
+            o_rst <= '0';
+
+        end loop;
 
         -- logic test
 
-        o_first_operand <= x"00000005"; -- +5
-        o_second_operand <= x"00000008"; -- +8
-        o_manage <= XOR_OP;
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= positives(j);
+                o_second_operand <= positives(i);
+                o_manage <= XOR_OP;
+                wait for clk_period;
+                o_manage <= OR_OP;
+                wait for clk_period;
+                o_manage <= AND_OP;
+                wait for clk_period;
+                o_second_operand <= positive_imms(i);
+                o_manage <= XORI_OP;
+                wait for clk_period;
+                o_manage <= ORI_OP;
+                wait for clk_period;
+                o_manage <= ANDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
+        o_rst <= '1';
         wait for clk_period;
-        o_manage <= OR_OP;
+        o_rst <= '0';
+
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= positives(j);
+                o_second_operand <= negatives(i);
+                o_manage <= XOR_OP;
+                wait for clk_period;
+                o_manage <= OR_OP;
+                wait for clk_period;
+                o_manage <= AND_OP;
+                wait for clk_period;
+                o_second_operand <= negative_imms(i);
+                o_manage <= XORI_OP;
+                wait for clk_period;
+                o_manage <= ORI_OP;
+                wait for clk_period;
+                o_manage <= ANDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
+        o_rst <= '1';
         wait for clk_period;
-        o_manage <= AND_OP;
+        o_rst <= '0';
+
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= negatives(j);
+                o_second_operand <= positives(i);
+                o_manage <= XOR_OP;
+                wait for clk_period;
+                o_manage <= OR_OP;
+                wait for clk_period;
+                o_manage <= AND_OP;
+                wait for clk_period;
+                o_second_operand <= positive_imms(i);
+                o_manage <= XORI_OP;
+                wait for clk_period;
+                o_manage <= ORI_OP;
+                wait for clk_period;
+                o_manage <= ANDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
+        o_rst <= '1';
         wait for clk_period;
-        o_manage <= XORI_OP;
-        wait for clk_period;
-        o_manage <= ORI_OP;
-        wait for clk_period;
-        o_manage <= ANDI_OP;
-        wait for clk_period;
+        o_rst <= '0';
+
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= negatives(j);
+                o_second_operand <= negatives(i);
+                o_manage <= XOR_OP;
+                wait for clk_period;
+                o_manage <= OR_OP;
+                wait for clk_period;
+                o_manage <= AND_OP;
+                wait for clk_period;
+                o_second_operand <= negative_imms(i);
+                o_manage <= XORI_OP;
+                wait for clk_period;
+                o_manage <= ORI_OP;
+                wait for clk_period;
+                o_manage <= ANDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
 
         -- multiplication test
 
-        o_first_operand <= x"00000005"; -- 5 // результат - 1200
-        o_second_operand <= x"000000F0"; -- 240      // или x"00000000000004B0"
-        o_manage <= MUL_OP;
-        wait for clk_period;
-        o_manage <= MULH_OP;
-        wait for clk_period;
-        o_manage <= MULHSU_OP;
-        wait for clk_period;
-        o_manage <= MULHU_OP;
-        wait for clk_period;
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= positives(j);
+                o_second_operand <= positives(i);
+                o_manage <= MUL_OP;
+                wait for clk_period;
+                o_manage <= MULH_OP;
+                wait for clk_period;
+                o_manage <= MULHSU_OP;
+                wait for clk_period;
+                o_manage <= MULHU_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
 
-        o_first_operand <= x"10000005"; -- 268435461 // результат - 64 424 510 640
-        o_second_operand <= x"000000F0"; -- 240      // или x"0000000F000004B0"
-        o_manage <= MUL_OP;
-        wait for clk_period;
-        o_manage <= MULH_OP;
-        wait for clk_period;
-        o_manage <= MULHSU_OP;
-        wait for clk_period;
-        o_manage <= MULHU_OP;
-        wait for clk_period;
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= positives(j);
+                o_second_operand <= negatives(i);
+                o_manage <= MUL_OP;
+                wait for clk_period;
+                o_manage <= MULH_OP;
+                wait for clk_period;
+                o_manage <= MULHSU_OP;
+                wait for clk_period;
+                o_manage <= MULHU_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
 
-        o_first_operand <= x"FFFFFFFB"; -- -5 или 4294967291 для MULHU
-        o_second_operand <= x"000000F0"; -- 240 // результат для signed -1200 для unsigned 1 030 792 149 840
-        o_manage <= MUL_OP;                   --// или x"FFFFFFFFFFFFFB4F" и x"0000000EFFFFFFB50"
-        wait for clk_period;
-        o_manage <= MULH_OP;
-        wait for clk_period;
-        o_manage <= MULHSU_OP;
-        wait for clk_period;
-        o_manage <= MULHU_OP;
-        wait for clk_period;
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= negatives(j);
+                o_second_operand <= positives(i);
+                o_manage <= MUL_OP;
+                wait for clk_period;
+                o_manage <= MULH_OP;
+                wait for clk_period;
+                o_manage <= MULHSU_OP;
+                wait for clk_period;
+                o_manage <= MULHU_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
 
-        o_first_operand <= x"000000F0"; -- 240 // результат для signed -1200, для unsigned и signed/unsigned -  
-        o_second_operand <= x"FFFFFFFB"; -- -5 // 1 030 792 149 840 или x"FFFFFFFFFFFFFB4F" и x"0000000EFFFFFFB50"
-        o_manage <= MUL_OP;
-        wait for clk_period;
-        o_manage <= MULH_OP;
-        wait for clk_period;
-        o_manage <= MULHSU_OP;
-        wait for clk_period;
-        o_manage <= MULHU_OP;
-        wait for clk_period;
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= negatives(j);
+                o_second_operand <= negatives(i);
+                o_manage <= MUL_OP;
+                wait for clk_period;
+                o_manage <= MULH_OP;
+                wait for clk_period;
+                o_manage <= MULHSU_OP;
+                wait for clk_period;
+                o_manage <= MULHU_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
         o_rst <= '1';
         wait for clk_period;
         o_rst <= '0';
