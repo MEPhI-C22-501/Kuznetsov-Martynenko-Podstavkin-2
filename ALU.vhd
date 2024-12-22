@@ -44,7 +44,7 @@ architecture ALU_arch of ALU is
 
     
     begin
-    process(i_clk)
+    process(i_clk, i_rst)
         variable result : std_logic_vector(31 downto 0);
     begin
         if(i_rst = '1') then

@@ -132,6 +132,15 @@ begin
         wait for clk_period;
         o_rst <= '0';
 
+        o_first_operand <= x"00000000";
+        o_second_operand <= x"00000000";
+        o_manage <= ADD_OP;
+        wait for clk_period;
+        o_manage <= SUB_OP;
+        wait for clk_period;
+        o_manage <= ADDI_OP;
+        wait for clk_period;
+
         -- shift tests
 
         for i in 0 to 2 loop 
@@ -352,6 +361,88 @@ begin
                 o_manage <= ORI_OP;
                 wait for clk_period;
                 o_manage <= ANDI_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        -- comparator test
+
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= positives(j);
+                o_second_operand <= positives(i);
+                o_manage <= SLT_OP;
+                wait for clk_period;
+                o_manage <= SLTU_OP;
+                wait for clk_period;
+                o_second_operand <= positive_imms(i);
+                o_manage <= SLTI_OP;
+                wait for clk_period;
+                o_manage <= SLTIU_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= positives(j);
+                o_second_operand <= negatives(i);
+                o_manage <= SLT_OP;
+                wait for clk_period;
+                o_manage <= SLTU_OP;
+                wait for clk_period;
+                o_second_operand <= negative_imms(i);
+                o_manage <= SLTI_OP;
+                wait for clk_period;
+                o_manage <= SLTIU_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= negatives(j);
+                o_second_operand <= positives(i);
+                o_manage <= SLT_OP;
+                wait for clk_period;
+                o_manage <= SLTU_OP;
+                wait for clk_period;
+                o_second_operand <= positive_imms(i);
+                o_manage <= SLTI_OP;
+                wait for clk_period;
+                o_manage <= SLTIU_OP;
+                wait for clk_period;
+            end loop;
+        end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        for i in 0 to 2 loop 
+            for j in 0 to 2 loop
+                o_first_operand <= negatives(j);
+                o_second_operand <= negatives(i);
+                o_manage <= SLT_OP;
+                wait for clk_period;
+                o_manage <= SLTU_OP;
+                wait for clk_period;
+                o_second_operand <= negative_imms(i);
+                o_manage <= SLTI_OP;
+                wait for clk_period;
+                o_manage <= SLTIU_OP;
                 wait for clk_period;
             end loop;
         end loop;
