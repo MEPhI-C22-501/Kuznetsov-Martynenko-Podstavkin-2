@@ -377,7 +377,7 @@ begin
         wait for clk_period;
         o_rst <= '0';
 
-        -- -- shift tests
+        -- shift tests
 
         for i in 0 to 2 loop 
             o_first_operand <= positives(i);
@@ -1399,6 +1399,37 @@ begin
         wait for clk_period;
         o_rst <= '0';
 
+        for j in 0 to 2 loop
+            o_first_operand <= x"00000000";
+            o_second_operand <= unsignes(j);
+            o_manage <= SLTU_OP;
+            wait for clk_period;
+        end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        for i in 0 to 2 loop 
+            o_first_operand <= unsignes(i);
+            o_second_operand <= x"00000000";
+            o_manage <= SLTU_OP;
+            wait for clk_period;
+        end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        o_first_operand <= x"00000000";
+        o_second_operand <= x"00000000";
+        o_manage <= SLTU_OP;
+        wait for clk_period;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
         for i in 0 to 2 loop 
             for j in 0 to 2 loop
                 o_first_operand <= unsignes(i);
@@ -1407,6 +1438,37 @@ begin
                 wait for clk_period;
             end loop;
         end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        for j in 0 to 2 loop
+            o_first_operand <= x"00000000";
+            o_second_operand <= unsigned_imms(j);
+            o_manage <= SLTIU_OP;
+            wait for clk_period;
+        end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        for i in 0 to 2 loop 
+            o_first_operand <= unsignes(i);
+            o_second_operand <= x"00000000";
+            o_manage <= SLTIU_OP;
+            wait for clk_period;
+        end loop;
+
+        o_rst <= '1';
+        wait for clk_period;
+        o_rst <= '0';
+
+        o_first_operand <= x"00000000";
+        o_second_operand <= x"00000000";
+        o_manage <= SLTIU_OP;
+        wait for clk_period;
 
         o_rst <= '1';
         wait for clk_period;
@@ -1729,5 +1791,5 @@ begin
         wait for clk_period;
         o_rst <= '0';
 
-    end process ;
+    end process;
 end architecture;
