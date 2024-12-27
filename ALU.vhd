@@ -42,44 +42,44 @@ architecture ALU_arch of ALU is
     constant MULHSU_OP : std_logic_vector := "00000010100110011";
     constant MULHU_OP  : std_logic_vector := "00000010110110011";
 
+    signal result_r : std_logic_vector(31 downto 0);
     
     begin
     process(i_clk, i_rst)
-        variable result : std_logic_vector(31 downto 0);
     begin
         if(i_rst = '1') then
-            result := x"00000000";
+            result_r <= x"00000000";
         elsif(rising_edge(i_clk)) then
             if(i_manage = ADDI_OP or i_manage = ADD_OP) then
-                result := addition(i_first_operand, i_second_operand);
+                result_r <= addition(i_first_operand, i_second_operand);
             elsif(i_manage = SLTI_OP or i_manage = SLT_OP) then 
-                result := set_less_then(i_first_operand, i_second_operand);            
+                result_r <= set_less_then(i_first_operand, i_second_operand);            
             elsif(i_manage = SLTIU_OP) then 
-                result := set_less_then_unsigned(i_first_operand, i_second_operand);            
+                result_r <= set_less_then_unsigned(i_first_operand, i_second_operand);            
             elsif(i_manage = XORI_OP or i_manage = XOR_OP) then
-                result := i_first_operand xor i_second_operand;            
+                result_r <= i_first_operand xor i_second_operand;            
             elsif(i_manage = ORI_OP or i_manage = OR_OP) then
-                result := i_first_operand or i_second_operand;            
+                result_r <= i_first_operand or i_second_operand;            
             elsif(i_manage = ANDI_OP or i_manage = AND_OP) then 
-                result := i_first_operand and i_second_operand;            
+                result_r <= i_first_operand and i_second_operand;            
             elsif(i_manage = SLLI_OP or i_manage = SLL_OP) then 
-                result := shift_left_logic(i_first_operand, i_second_operand); 
+                result_r <= shift_left_logic(i_first_operand, i_second_operand); 
             elsif(i_manage = SRLI_OP or i_manage = SRL_OP) then 
-                result := shift_right_logic(i_first_operand, i_second_operand); 
+                result_r <= shift_right_logic(i_first_operand, i_second_operand); 
             elsif(i_manage = SRAI_OP or i_manage = SRA_OP) then
-                result := shift_right_arithmetic(i_first_operand, i_second_operand); 
+                result_r <= shift_right_arithmetic(i_first_operand, i_second_operand); 
             elsif(i_manage = SUB_OP) then
-                result := substraction(i_first_operand, i_second_operand); 
+                result_r <= substraction(i_first_operand, i_second_operand); 
             elsif(i_manage = MUL_OP) then 
-                result := multiplication(i_first_operand, i_second_operand); 
+                result_r <= multiplication(i_first_operand, i_second_operand); 
             elsif(i_manage = MULH_OP) then 
-                result := multiplication_high(i_first_operand, i_second_operand); 
+                result_r <= multiplication_high(i_first_operand, i_second_operand); 
             elsif(i_manage = MULHSU_OP) then
-                result := multiplication_high_signed_unsigned(i_first_operand, i_second_operand);
+                result_r <= multiplication_high_signed_unsigned(i_first_operand, i_second_operand);
             elsif(i_manage = MULHU_OP) then
-                result := multiplication_high_unsigned(i_first_operand, i_second_operand);
+                result_r <= multiplication_high_unsigned(i_first_operand, i_second_operand);
             end if;
         end if;
-        o_result <= result;
     end process;
+    o_result <= result_r;
 end architecture;
