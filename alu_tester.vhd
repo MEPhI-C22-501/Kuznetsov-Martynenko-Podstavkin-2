@@ -67,9 +67,8 @@ begin
     process
     begin
 
-	    o_rst <= '1';
-	    wait_clk(2);
-	    wait for 1 ns;
+        o_rst <= '1';
+        wait_clk(2);
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -78,13 +77,11 @@ begin
                 o_second_operand <= positives(j);
 		        o_manage <= ADD_OP;
 		        wait_clk(2);
-		        wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -93,13 +90,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= ADD_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -108,13 +103,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= ADD_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -123,13 +116,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= ADD_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -137,12 +128,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= ADD_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -150,12 +139,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= ADD_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -163,12 +150,10 @@ begin
             o_second_operand <= positives(i);
             o_manage <= ADD_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -176,23 +161,19 @@ begin
             o_second_operand <= negatives(i);
             o_manage <= ADD_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= ADD_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -201,13 +182,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= SUB_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -216,13 +195,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= SUB_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -231,13 +208,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= SUB_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -246,13 +221,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= SUB_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -260,12 +233,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SUB_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -273,12 +244,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SUB_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -286,12 +255,10 @@ begin
             o_second_operand <= positives(i);
             o_manage <= SUB_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -299,23 +266,19 @@ begin
             o_second_operand <= negatives(i);
             o_manage <= SUB_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= SUB_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -324,13 +287,11 @@ begin
                 o_second_operand <= positive_imms(j);
                 o_manage <= ADDI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -339,13 +300,11 @@ begin
                 o_second_operand <= negative_imms(j);
                 o_manage <= ADDI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -354,13 +313,11 @@ begin
                 o_second_operand <= positive_imms(j);
                 o_manage <= ADDI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -369,13 +326,11 @@ begin
                 o_second_operand <= negative_imms(j);
                 o_manage <= ADDI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -383,12 +338,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= ADDI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -396,12 +349,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= ADDI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -409,12 +360,10 @@ begin
             o_second_operand <= positive_imms(i);
             o_manage <= ADDI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -422,23 +371,19 @@ begin
             o_second_operand <= negative_imms(i);
             o_manage <= ADDI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= ADDI_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         -- shift tests
@@ -448,12 +393,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -461,12 +404,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -474,12 +415,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SLL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -487,12 +426,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SLL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -500,12 +437,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SLL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -513,12 +448,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SLL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -526,12 +459,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SLL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -539,12 +470,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SLL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -552,12 +481,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -565,12 +492,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -578,12 +503,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SLLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -591,12 +514,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SLLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -604,12 +525,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SLLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -617,12 +536,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SLLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -630,12 +547,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SLLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -643,12 +558,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SLLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -656,12 +569,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SRL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -669,12 +580,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SRL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -682,12 +591,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SRL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -695,12 +602,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SRL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -708,12 +613,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SRL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -721,12 +624,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SRL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -734,12 +635,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SRL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -747,12 +646,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SRL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -760,12 +657,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SRLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -773,12 +668,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SRLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -786,12 +679,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SRLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -799,12 +690,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SRLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -812,12 +701,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SRLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -825,12 +712,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SRLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -838,12 +723,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SRLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -851,12 +734,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SRLI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -864,12 +745,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SRA_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -877,12 +756,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SRA_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -890,12 +767,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SRA_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -903,12 +778,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SRA_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -916,12 +789,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SRA_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -929,12 +800,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SRA_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -942,12 +811,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SRA_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -955,12 +822,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SRA_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -968,12 +833,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SRAI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -981,12 +844,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SRAI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -994,12 +855,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SRAI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1007,12 +866,10 @@ begin
             o_second_operand <= x"00000001";
             o_manage <= SRAI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1020,12 +877,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SRAI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1033,12 +888,10 @@ begin
             o_second_operand <= x"00000002";
             o_manage <= SRAI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1046,12 +899,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SRAI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1059,12 +910,10 @@ begin
             o_second_operand <= x"00000020";
             o_manage <= SRAI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
 
@@ -1076,13 +925,11 @@ begin
                 o_second_operand <= unsignes(j);
                 o_manage <= XOR_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop
@@ -1090,12 +937,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= XOR_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop
@@ -1103,23 +948,19 @@ begin
             o_second_operand <= unsignes(i);
             o_manage <= XOR_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= XOR_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1128,13 +969,11 @@ begin
                 o_second_operand <= unsignes(j);
                 o_manage <= OR_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1142,12 +981,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= OR_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1155,23 +992,19 @@ begin
             o_second_operand <= unsignes(j);
             o_manage <= OR_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= OR_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1180,13 +1013,11 @@ begin
                 o_second_operand <= unsignes(j);
                 o_manage <= AND_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1194,12 +1025,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= AND_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1207,23 +1036,19 @@ begin
             o_second_operand <= unsignes(j);
             o_manage <= AND_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= AND_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1232,13 +1057,11 @@ begin
                 o_second_operand <= unsigned_imms(j);
                 o_manage <= XORI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1246,12 +1069,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= XORI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1259,23 +1080,19 @@ begin
             o_second_operand <= unsigned_imms(i);
             o_manage <= XORI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= XORI_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1284,13 +1101,11 @@ begin
                 o_second_operand <= unsigned_imms(j);
                 o_manage <= ORI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1298,12 +1113,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= ORI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1311,23 +1124,19 @@ begin
             o_second_operand <= unsigned_imms(i);
             o_manage <= ORI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= ORI_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1336,13 +1145,11 @@ begin
                 o_second_operand <= unsigned_imms(j);
                 o_manage <= ANDI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1350,12 +1157,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= ANDI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1363,23 +1168,19 @@ begin
             o_second_operand <= unsigned_imms(i);
             o_manage <= ANDI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= ANDI_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         -- comparator test
@@ -1390,13 +1191,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= SLT_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1405,13 +1204,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= SLT_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1420,13 +1217,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= SLT_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
         
         for i in 0 to 2 loop 
@@ -1435,13 +1230,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= SLT_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1449,12 +1242,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLT_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
         
         for j in 0 to 2 loop
@@ -1462,12 +1253,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLT_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1475,12 +1264,10 @@ begin
             o_second_operand <= positives(j);
             o_manage <= SLT_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1488,23 +1275,19 @@ begin
             o_second_operand <= negatives(j);
             o_manage <= SLT_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= SLT_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1513,13 +1296,11 @@ begin
                 o_second_operand <= positive_imms(j);
                 o_manage <= SLTI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1528,13 +1309,11 @@ begin
                 o_second_operand <= negative_imms(j);
                 o_manage <= SLTI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1543,13 +1322,11 @@ begin
                 o_second_operand <= positive_imms(j);
                 o_manage <= SLTI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1558,13 +1335,11 @@ begin
                 o_second_operand <= negative_imms(j);
                 o_manage <= SLTI_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1572,12 +1347,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLTI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1585,12 +1358,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLTI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1598,12 +1369,10 @@ begin
             o_second_operand <= positive_imms(j);
             o_manage <= SLTI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1611,23 +1380,19 @@ begin
             o_second_operand <= negative_imms(j);
             o_manage <= SLTI_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
         
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= SLTI_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1636,13 +1401,11 @@ begin
                 o_second_operand <= unsignes(j);
                 o_manage <= SLTU_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1650,12 +1413,10 @@ begin
             o_second_operand <= unsignes(j);
             o_manage <= SLTU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1663,23 +1424,19 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLTU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= SLTU_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1688,13 +1445,11 @@ begin
                 o_second_operand <= unsigned_imms(j);
                 o_manage <= SLTIU_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for j in 0 to 2 loop
@@ -1702,12 +1457,10 @@ begin
             o_second_operand <= unsigned_imms(j);
             o_manage <= SLTIU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1715,23 +1468,19 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= SLTIU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= SLTIU_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         -- multiplication test
@@ -1742,13 +1491,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= MUL_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1757,13 +1504,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= MUL_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1772,13 +1517,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= MUL_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1787,13 +1530,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= MUL_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1801,12 +1542,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= MUL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1814,12 +1553,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= MUL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1827,12 +1564,10 @@ begin
         o_second_operand <= positives(i);
         o_manage <= MUL_OP;
         wait_clk(2);
-        wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1840,23 +1575,19 @@ begin
             o_second_operand <= negatives(i);
             o_manage <= MUL_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= MUL_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1865,13 +1596,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= MULH_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1880,13 +1609,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= MULH_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1895,13 +1622,11 @@ begin
                 o_second_operand <= positives(j);
                 o_manage <= MULH_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1910,13 +1635,11 @@ begin
                 o_second_operand <= negatives(j);
                 o_manage <= MULH_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1924,12 +1647,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= MULH_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1937,7 +1658,6 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= MULH_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         for i in 0 to 2 loop 
@@ -1945,12 +1665,10 @@ begin
             o_second_operand <= positives(i);
             o_manage <= MULH_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1958,23 +1676,19 @@ begin
             o_second_operand <= negatives(i);
             o_manage <= MULH_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= MULH_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1983,13 +1697,11 @@ begin
                 o_second_operand <= unsignes(j);
                 o_manage <= MULHU_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -1997,12 +1709,10 @@ begin
             o_second_operand <= unsignes(i);
             o_manage <= MULHU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
 
@@ -2011,19 +1721,16 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= MULHU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= MULHU_OP;
         wait_clk(2);
-        wait for 1 ns;
 
         for i in 0 to 2 loop 
             for j in 0 to 2 loop
@@ -2031,13 +1738,11 @@ begin
                 o_second_operand <= unsignes(j);
                 o_manage <= MULHSU_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -2046,13 +1751,11 @@ begin
                 o_second_operand <= unsignes(j);
                 o_manage <= MULHSU_OP;
                 wait_clk(2);
-                wait for 1 ns;
             end loop;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -2060,12 +1763,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= MULHSU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -2073,12 +1774,10 @@ begin
             o_second_operand <= x"00000000";
             o_manage <= MULHSU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         for i in 0 to 2 loop 
@@ -2086,23 +1785,19 @@ begin
             o_second_operand <= unsignes(i);
             o_manage <= MULHSU_OP;
             wait_clk(2);
-            wait for 1 ns;
         end loop;
 
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
         o_first_operand <= x"00000000";
         o_second_operand <= x"00000000";
         o_manage <= MULHSU_OP;
         wait_clk(2);
-        wait for 1 ns;
         
         o_rst <= '1';
         wait_clk(2);
-        wait for 1 ns;
         o_rst <= '0';
 
     end process;
